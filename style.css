@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+:root {
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+    color: white;
+    font-family: Oswald, Lato;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+.banner {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    height: 50px;
+    width: 400px;
+    border: 2px solid white;
+}
+.bannerMessage {
+    text-align: center;
+    margin: 10px;
+    height: 30px;
+}
+.filterInput {
+    outline: none;
+    border: 1px dashed white;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+.postsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 500px;
+    /* height: 100vh; */
+    /* height: 100%;; */
+}
+
+.post {
+    /* height:auto; */
+    width: 400px;
+    margin: 20px;
+    /* border: 2px dashed white; */
+}
+.idContainer {
+    border: 1px solid white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+.id {
+    align-self: center;
+    text-align: center;
+    transform: translate3d(0, 35%, 0);
+}
+.messageContainer {
+    width: 380px;
+    height: 100px;
+    padding: 10px;
+    background-color: black;
+    border: 2px dashed white;
+}
+.lodinAnimationContianer {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+.loadingAnimation {
+    align-self: center;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+.loadingAnimation:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: loadingAnimation 1.2s linear infinite;
+}
+@keyframes loadingAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.hide {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
