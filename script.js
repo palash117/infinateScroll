@@ -3,6 +3,7 @@ const PAGE_SIZE = 5;
 //var
 var postList = [];
 var pageNo = 1;
+var intersectionObserver;
 
 //dom refferneces
 var elPostContainer;
@@ -14,6 +15,7 @@ var init = () => {
     initDomRefferences();
     setupEventListeners();
     initializeDomValues();
+    setupIntersectionObserver();
     fetchMorePostsAndDisplay();
 };
 
@@ -31,6 +33,20 @@ var setupEventListeners = () => {
 
 //initializeDomValues
 var initializeDomValues = () => {};
+
+//intersectionObserver
+var setupIntersectionObserver = () => {
+    intersectionObserver = new IntersectionObserver(
+        function (entries) {
+            // isIntersecting is true when element and viewport are overlapping
+            // isIntersecting is false when element and viewport don't overlap
+            if (entries[0].isIntersecting === true) fetchMorePostsAndDisplay();
+        },
+        { threshold: [0] }
+    );
+    intersectionObserver.observe(document.querySelector(".loadingAnimation"));
+};
+
 //eventListeners
 
 var filter = () => {
@@ -52,9 +68,6 @@ var fetchMorePostsAndDisplay = () => {
             };
         })(),
         10000
-    );
-    console.table(
-        `request https://jsonplaceholder.typicode.com/posts?_limit=${PAGE_SIZE}&_page=${pageNo}`
     );
     fetch(
         `https://jsonplaceholder.typicode.com/posts?_limit=${PAGE_SIZE}&_page=${pageNo++}`
@@ -91,10 +104,3 @@ var display = (posts) => {
 
 //init call
 window.onload = init;
-window.addEventListener("scroll", () => {
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-
-    if (scrollTop + clientHeight >= scrollHeight - 5) {
-        fetchMorePostsAndDisplay();
-    }
-});
