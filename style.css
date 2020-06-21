@@ -3,6 +3,7 @@
 
 :root {
     box-sizing: border-box;
+    --baseWidth: 400;
 }
 body {
     background-color: black;
@@ -13,7 +14,6 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    /* height: 100vh; */
     align-items: center;
     justify-content: center;
     overflow: auto;
@@ -22,12 +22,13 @@ body {
     margin-top: 50px;
     margin-bottom: 20px;
     height: 50px;
-    width: 400px;
+    /* width: var(--baseWidth); */
+    width: 100%;
     border: 2px solid white;
 }
 .bannerMessage {
     text-align: center;
-    margin: 10px;
+    margin: 10px 0;
     height: 30px;
 }
 .filterInput {
@@ -49,8 +50,8 @@ body {
 
 .post {
     /* height:auto; */
-    width: 400px;
-    margin: 20px;
+    width: var(--baseWidth);
+    margin: 20px 0;
     /* border: 2px dashed white; */
 }
 .idContainer {
@@ -66,16 +67,17 @@ body {
     transform: translate3d(0, 35%, 0);
 }
 .messageContainer {
-    width: 380px;
-    height: 100px;
+    /* width: i; */
+    /* height: 100px; */
     padding: 10px;
     background-color: black;
     border: 2px dashed white;
+    /* overflow: ; */
 }
 .lodinAnimationContianer {
     width: 100px;
     height: 100px;
-    margin: 10px;
+    margin: 10px 0;
 }
 .loadingAnimation {
     align-self: center;
@@ -105,4 +107,10 @@ body {
 .hide {
     opacity: 0;
     transition: opacity 0.3s ease-in;
+}
+
+@media (max-width: 650px) {
+    :root {
+        --baseWidth: 250px;
+    }
 }
