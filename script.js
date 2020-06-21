@@ -51,7 +51,7 @@ var fetchMorePostsAndDisplay = () => {
                 console.log("hide added");
             };
         })(),
-        1000
+        10000
     );
     console.table(
         `request https://jsonplaceholder.typicode.com/posts?_limit=${PAGE_SIZE}&_page=${pageNo}`
@@ -63,6 +63,7 @@ var fetchMorePostsAndDisplay = () => {
         .then((resp) => {
             postList = postList.concat(resp);
             display(postList);
+            elLoading.classList.add("hide");
         });
 };
 
